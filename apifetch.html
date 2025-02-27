@@ -10,7 +10,7 @@
 
     <title>Hello, world!</title>
   </head>
-  <body ><nav class="navbar navbar-expand-lg navbar-light">
+  <body ><nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,26 +46,11 @@
         </div>
       </div>
     </nav>
-   <table>
+ 
 
-      <tr>
-      <th>student id</th>
-      <th>student Name</th>
-    </tr>
-
-    <tr>
-    <td>ahmad</td>
-    <td>ali</td>
-  </tr>
-   </table>
- <div id="gen" style="background-color:pink; height:30px;">
 
  </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <!-- <p id="displayText"></p>
-  <input type="text" id="intext" placeholder="Type something here..."> -->
-  <button id="google" >Go to Google</button>
-   <p id="paragra">Hello peeps</p>
    <div id="parent" style="display: flex; flex-direction: row; align-items: center;">
    
 </div>
@@ -75,26 +60,36 @@ const URL ="https://dragonball-api.com/api/characters"
 async function getData() {
   const response = await fetch(URL);
   const data = await response.json();
-  console.log(data);
-  data.items.foreach((item) => {
-    // Create a container for each item
+  data.items.forEach((item) => {
     const container = document.createElement('div');
     container.innerHTML = `
       <img src="${item.image}" width="100">
       <p id="name">${item.name}</p>
       <p id="lowprice">${item.ki}</p>
-      <hr>
     `;
     
-    document.querySelector('#parent').appendChild(container); // Append to the body or any container you like
-    console.log(container)
+    document.querySelector('#parent').appendChild(container); 
   });
-
-  console.log(data.items);
 }
 
 getData();
 
     </script>
+    <style>
+      #parent {
+  flex-wrap: wrap; 
+  gap: 20px; 
+}
+
+#parent div {
+  width: calc(25% - 20px); 
+  text-align: center; 
+  border: 1px solid #ccc; 
+  padding: 10px; 
+    min-height: 400px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+    </style>
   </body>
 </html>
